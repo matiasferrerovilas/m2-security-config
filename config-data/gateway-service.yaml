@@ -27,7 +27,5 @@ spring:
             - Path=/jum/**
         - id: ps-service
           uri: lb://ps-service
-          filters: AuthHeaderFilter
           predicates:
-            - Header=Authorization, Bearer (.*)
             - Path=/ps/**
