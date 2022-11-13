@@ -8,3 +8,16 @@ eureka:
       default-zone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+
+logging:
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){blue} %clr(---){faint} %clr(%F) %clr(%L) %clr(%highlight(%-5level)) %clr(${PID}){faint} %clr(---){faint} %clr([%8.30t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n"
+  level:
+    org:
+    springframework:
+      web: DEBUG
+      filter:
+        CommonsRequestLoggingFilter: DEBUG
+    hibernate:
+      SQL: ERROR
