@@ -8,6 +8,10 @@ eureka:
       default-zone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  datasource:
+    url: jdbc:mysql://localhost/seguridad_m1?serverTimezone=America/Argentina/Buenos_Aires
+    username: root
+    password: Hola123!
 
 logging:
   pattern:

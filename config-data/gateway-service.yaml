@@ -21,10 +21,6 @@ spring:
           uri: lb://auth-service
           predicates:
             - Path=/auth/**
-        - id: user-management-service
-          uri: lb://user-management-service
-          predicates:
-            - Path=/jum/**
         - id: ps-service
           uri: lb://ps-service
           filters: AuthHeaderFilter
