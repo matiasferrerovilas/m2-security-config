@@ -21,14 +21,14 @@ resilience4j:
         slow-call-rate-threshold: 50
         slow-call-duration-threshold: 2s
       instances:
-        auth-cp:
+        authcb:
           base-config: default
   timelimiter:
     configs:
       default:
         timeout-duration: 6s
       instances:
-        auth-cp:
+        authcb:
           base-config: default
 
 spring:
@@ -46,7 +46,7 @@ spring:
       routes:
         - id: auth-service
           uri: lb://auth-service
-          filters: CircuitBreaker=auth-cp
+          filters: CircuitBreaker=authcb
           predicates:
             - Path=/auth/**
         - id: ps-service
