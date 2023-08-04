@@ -36,11 +36,6 @@ spring:
       hibernate:
         format_sql: true
         generate_statistics: false
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
 
 jwt:
   secret: secret
