@@ -19,3 +19,18 @@ logging:
         CommonsRequestLoggingFilter: DEBUG
     hibernate:
       SQL: ERROR
+
+datasource:
+    url: jdbc:mysql://localhost/seguridad_m1?serverTimezone=America/Argentina/Buenos_Aires
+    username: root
+    password: Hola123!
+  jpa:
+    database-platform:  org.hibernate.dialect.MySQL8Dialect
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        generate_statistics: false
