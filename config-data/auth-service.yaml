@@ -21,7 +21,7 @@ logging:
       SQL: ERROR
 
 datasource:
-    url: jdbc:mysql://localhost/seguridad_m1?serverTimezone=America/Argentina/Buenos_Aires
+    url: jdbc:mysql://mysql:8083/seguridad_m1?serverTimezone=America/Argentina/Buenos_Aires
     username: root
     password: Hola123!
   jpa:
