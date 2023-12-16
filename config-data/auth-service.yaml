@@ -22,7 +22,7 @@ logging:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/seguridad_m1
+    url: jdbc:mysql://mysql/seguridad_m1?useSSL=false
     username: root
     password: Hola123!
   jpa:
