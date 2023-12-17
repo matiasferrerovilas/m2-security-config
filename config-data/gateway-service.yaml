@@ -55,6 +55,5 @@ spring:
             - Path=/ps/**
         - id: jum-service
           uri: lb://jum-service
-          filters: AuthHeaderFilter
           predicates:
             - Path=/jum/**
