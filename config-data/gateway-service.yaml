@@ -57,5 +57,4 @@ spring:
           uri: lb://jum-service
           filters: AuthHeaderFilter
           predicates:
-            - Header=Authorization, Bearer (.*)
             - Path=/jum/**
