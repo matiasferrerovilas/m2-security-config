@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:${SERVER_PORT:0}}
+  port: 8084
 eureka:
   client:
     fetch-registry: true
@@ -15,6 +15,20 @@ spring:
     port: 5672
     username: guest
     password: guest
+  datasource:
+    url: jdbc:mysql://mysql/seguridad_m1_password?serverTimezone=America/Argentina/Buenos_Aires
+    username: root
+    password: Hola123!
+  jpa:
+    database-platform:  org.hibernate.dialect.MySQL8Dialect
+    show-sql: false
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        generate_statistics: false
 
 jwt:
   secret: secret
