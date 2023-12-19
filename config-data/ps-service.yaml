@@ -16,7 +16,7 @@ spring:
     username: guest
     password: guest
   datasource:
-    url: jdbc:mysql://mysql/seguridad_m1_password?serverTimezone=America/Argentina/Buenos_Aires
+    url: jdbc:mysql://mysql-sm1-ps-service/seguridad_m1_password?serverTimezone=America/Argentina/Buenos_Aires
     username: root
     password: Hola123!
   jpa:
