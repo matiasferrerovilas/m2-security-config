@@ -57,3 +57,7 @@ spring:
           uri: lb://jum-service
           predicates:
             - Path=/jum/**
+        - id: jld-service
+          uri: lb://jld-service
+          predicates:
+            - Path=/jld/**
