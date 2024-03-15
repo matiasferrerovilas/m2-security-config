@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: ${PORT:${SERVER_PORT:0}}
 
 eureka:
   client:
@@ -32,7 +32,7 @@ spring:
     database-platform:  org.hibernate.dialect.MySQL8Dialect
     show-sql: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     open-in-view: false
     properties:
       hibernate:
