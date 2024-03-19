@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
   
 eureka:
   client:
@@ -8,28 +8,9 @@ eureka:
     service-url:
       default-zone: http://eureka-service:8761/eureka
 
-resilience4j:
-  circuitbreaker:
-    configs:
-      default:
-        sliding-window-size: 6
-        failure-rate-threshold: 50
-        wait-duration-in-open-state: 15s
-        permitted-number-of-calls-in-half-open-state: 4
-        slow-call-rate-threshold: 50
-        slow-call-duration-threshold: 2s
-      instances:
-        authcb:
-          base-config: default
-  timelimiter:
-    configs:
-      default:
-        timeout-duration: 6s
-      instances:
-        authcb:
-          base-config: default
-
 spring:
+  application:
+    name: gateway-service
   cloud:
     gateway:
       globalcors:
@@ -41,17 +22,15 @@ spring:
       discovery:
         locator:
           enabled: true
+          lower-case-service-id: true
       routes:
         - id: auth-service
           uri: lb://auth-service
-          filters: CircuitBreaker=authcb
           predicates:
             - Path=/auth/**
         - id: ps-service
           uri: lb://ps-service
-          filters: AuthHeaderFilter
           predicates:
-            - Header=Authorization, Bearer (.*)
             - Path=/ps/**
         - id: jum-service
           uri: lb://jum-service
@@ -61,3 +40,41 @@ spring:
           uri: lb://jld-service
           predicates:
             - Path=/jld/**
+      default-filters: TokenRelay
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/SSO
+        registration:
+          spring-cloud-gateway-client:
+            client-id: mferrero
+            client-secret: QoAoGXs5QKFUQZ3daIl9hNYZ0UxSQeG2
+            provider: keycloak
+            scope:
+              - openid
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8081/login/oauth2/code/mferrero
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/SSO
+
+datasource:
+  url: jdbc:mysql://localhost:8083/seguridad_m1?serverTimezone=America/Argentina/Buenos_Aires
+  username: root
+  password: Hola123!
+  jpa:
+    database-platform:  org.hibernate.dialect.MySQL8Dialect
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        generate_statistics: false
+
+jwt:
+  secret: secret
+  expiration: 300000
