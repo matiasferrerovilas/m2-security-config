@@ -1,5 +1,5 @@
 server:
-  port: 8084
+  port: ${PORT:${SERVER_PORT:0}}
 eureka:
   client:
     fetch-registry: true
@@ -8,40 +8,10 @@ eureka:
       default-zone: http://eureka-service:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-
 spring:
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
+  application:
+    name: ps-service
   datasource:
-    url: jdbc:mysql://mysql-sm1-ps-service/seguridad_m1_password?serverTimezone=America/Argentina/Buenos_Aires
+    url: jdbc:mysql://localhost/seguridad_m1?serverTimezone=America/Argentina/Buenos_Aires
     username: root
     password: Hola123!
-  jpa:
-    database-platform:  org.hibernate.dialect.MySQL8Dialect
-    show-sql: false
-    hibernate:
-      ddl-auto: update
-    open-in-view: false
-    properties:
-      hibernate:
-        format_sql: true
-        generate_statistics: false
-
-jwt:
-  secret: secret
-  expiration: 300000
-
-logging:
-  pattern:
-    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){blue} %clr(---){faint} %clr(%F) %clr(%L) %clr(%highlight(%-5level)) %clr(${PID}){faint} %clr(---){faint} %clr([%8.30t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n"
-  level:
-    org:
-    springframework:
-      web: DEBUG
-      filter:
-        CommonsRequestLoggingFilter: DEBUG
-    hibernate:
-      SQL: ERROR

@@ -1,6 +1,6 @@
 server:
   port: 8081
-  
+
 eureka:
   client:
     fetch-registry: true
@@ -59,22 +59,3 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8080/realms/SSO
-
-datasource:
-  url: jdbc:mysql://localhost:8083/seguridad_m1?serverTimezone=America/Argentina/Buenos_Aires
-  username: root
-  password: Hola123!
-  jpa:
-    database-platform:  org.hibernate.dialect.MySQL8Dialect
-    show-sql: false
-    hibernate:
-      ddl-auto: update
-    open-in-view: false
-    properties:
-      hibernate:
-        format_sql: true
-        generate_statistics: false
-
-jwt:
-  secret: secret
-  expiration: 300000
