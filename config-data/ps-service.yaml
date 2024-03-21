@@ -25,3 +25,14 @@ spring:
       hibernate:
         format_sql: true
         generate_statistics: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/SSO
+          jwk-set-uri: http://localhost:8080/realms/SSO/protocol/openid-connect/certs
+jwt:
+  auth:
+    converter:
+      principle-attribute: preferred_username
+      resource-id: mferrero
